@@ -9,19 +9,19 @@
 #               to use a static value.
 services:
   tram:
-    image: tram:latest
+    image: ghcr.io/center-for-threat-informed-defense/tram:latest
     environment:
       - DATA_DIRECTORY=/tram/data
-      - ALLOWED_HOSTS=["example_host1", "localhost"]
-      - CSRF_TRUSTED_ORIGINS=["http://example_host1:8000", "http://localhost:8000"]
-      - DJANGO_SUPERUSER_USERNAME=djangoSuperuser
-      - DJANGO_SUPERUSER_PASSWORD=LEGITPassword1234 # your password here
+      - ALLOWED_HOSTS=["example_host1", "localhost", "127.0.0.1"]
+      - CSRF_TRUSTED_ORIGINS=["http://example_host1:8000", "http://localhost:8000", "http://127.0.0.1:8000"]
+      - DJANGO_SUPERUSER_USERNAME=Lorem
+      - DJANGO_SUPERUSER_PASSWORD=loremIpsum # your password here
       - DJANGO_SUPERUSER_EMAIL=test@example.com # your email address here
     volumes:
       - tram:/tram/data
       - tram_static:/tram/src/tram/staticfiles
   nginx:
-    image: tram-nginx
+    image: ghcr.io/center-for-threat-informed-defense/tram-nginx:latest
     ports:
       - "8000:80"
     volumes:
